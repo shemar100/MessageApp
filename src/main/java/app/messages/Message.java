@@ -8,12 +8,12 @@ public class Message {
     private String text;
     private Date createdDate;
 
-    Message(String text) {
+    public Message(String text) {
         this.text = text;
         this.createdDate = new Date();
     }
 
-    Message(int id, String text, Date createdDate) {
+    public Message(int id, String text, Date createdDate) {
         this.id = id;
         this.text = text;
         this.createdDate = createdDate;
@@ -26,14 +26,14 @@ public class Message {
     }
 
 
-    String getText() {
+    public String getText() {
 
         return text;
 
     }
 
 
-    Date getCreatedDate() {
+    public Date getCreatedDate() {
 
         return createdDate;
 

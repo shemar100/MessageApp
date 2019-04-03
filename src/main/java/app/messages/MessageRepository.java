@@ -44,7 +44,7 @@ public class MessageRepository {
     }
 
 
-    Message saveMessage(Message message) {
+    public Message saveMessage(Message message) {
 
         GeneratedKeyHolder holder = new GeneratedKeyHolder();
 

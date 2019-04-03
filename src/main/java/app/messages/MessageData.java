@@ -3,7 +3,7 @@ package app.messages;
 public class MessageData {
     private String text;
 
-    String getText() {
+    public String getText() {
         return text;
     }
 
