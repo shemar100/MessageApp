@@ -6,6 +6,8 @@ import org.apache.commons.logging.Log;
 
 import org.apache.commons.logging.LogFactory;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
@@ -33,41 +35,21 @@ public class MessageRepository {
 
 
 
-    private NamedParameterJdbcTemplate jdbcTemplate;
+    private SessionFactory sessionFactory;
 
 
     @Autowired
-    public MessageRepository(DataSource dataSource) {
+    public MessageRepository(SessionFactory sessionFactory) {
 
-        this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+        this.sessionFactory = sessionFactory;
 
     }
 
 
     public Message saveMessage(Message message) {
-
-        GeneratedKeyHolder holder = new GeneratedKeyHolder();
-
-        MapSqlParameterSource params = new MapSqlParameterSource();
-
-        params.addValue("text", message.getText());
-
-        params.addValue("createdDate", message.getCreatedDate());
-        String insertSQL = "INSERT INTO app_messages.messages (`id`, `text`, `created_date`) VALUE (null, :text, :createdDate)";
-
-        try {
-
-            this.jdbcTemplate.update(insertSQL, params, holder);
-
-        } catch (DataAccessException e) {
-
-            logger.error("Failed to save message", e);
-
-            return null;
-
-        }
-
-        return new Message(holder.getKey().intValue(), message.getText(), message.getCreatedDate());
+        Session session = sessionFactory.openSession();
+        session.save(message);
+        return message;
 
     }
 
