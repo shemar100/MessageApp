@@ -1,27 +1,12 @@
 package app.messages;
 
 
-
 import org.apache.commons.logging.Log;
-
 import org.apache.commons.logging.LogFactory;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
-import org.springframework.jdbc.support.GeneratedKeyHolder;
-
 import org.springframework.stereotype.Component;
-
-
-
-import javax.sql.DataSource;
 
 
 
