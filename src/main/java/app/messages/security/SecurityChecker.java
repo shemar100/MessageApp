@@ -1,4 +1,4 @@
-package app.messages;
+package app.messages.security;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

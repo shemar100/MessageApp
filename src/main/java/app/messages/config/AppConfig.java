@@ -1,5 +1,6 @@
-package app.messages;
+package app.messages.config;
 
+import app.messages.AuditingFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -62,7 +63,6 @@ public class AppConfig {
 
 
     @Bean
-
     public HibernateTransactionManager transactionManager() {
 
         HibernateTransactionManager transactionManager =

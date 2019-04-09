@@ -1,4 +1,4 @@
-package app.messages;
+package app.messages.model;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +16,10 @@ public class Message {
     @Column(name = "created_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdDate;
+
+    public Message () {
+
+    }
 
     public Message(String text) {
         this.text = text;

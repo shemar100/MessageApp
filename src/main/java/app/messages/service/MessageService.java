@@ -1,9 +1,14 @@
-package app.messages;
+package app.messages.service;
 
+import app.messages.model.Message;
+import app.messages.repository.MessageRepository;
+import app.messages.security.SecurityCheck;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Component
 public class MessageService {
@@ -20,8 +25,12 @@ public class MessageService {
     public Message save(String text) {
         Message message = repository.saveMessage(new Message(text));
         log.debug("New message[id={}] saved", message.getId());
-        updateStatistics();
         return message;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Message> getMessages() {
+        return repository.getMessages();
     }
 
     private void updateStatistics() {
