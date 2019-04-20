@@ -25,7 +25,6 @@ import app.messages.service.MessageService;
 @RunWith(SpringRunner.class)
 @WebMvcTest(MessageController.class)
 public class MessageControllerTest {
-
     @Autowired
     private MockMvc mvc;
 
